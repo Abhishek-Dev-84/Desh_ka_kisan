@@ -233,10 +233,3 @@ def update_profile(request):
     else:
         return render(request,'profile-settings.html',{'user': request.user,})
     return render(request,'profile-settings.html',{'user': request.user,})
-
-from django.http import HttpResponse
-from django.core.management import call_command
-
-def run_migrations(request):
-    call_command('migrate')
-    return HttpResponse("Migrations completed.")
