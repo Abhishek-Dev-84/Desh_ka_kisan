@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'kisan',
         'USER':'postgres',
         'PASSWORD': '1234',
-        'HOSt':'localhost',
-        'PORT':'5000',
+        'HOSt':'dpg-d16t5s3uibrs73eojc6g-a',
+        'PORT':'5432',
     }
 }
 
