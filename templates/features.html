@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Features | Desh Ka Kisan</title>
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: green;
+    }
+
+    .language-select {
+      padding: 5px;
+    }
+
+    .main-content {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      color: green;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo" height="40" />
+    <nav>
+      <a href="/">Home</a>
+      <a href="features">Features</a>
+      <a href="help">Help</a>
+      <a href="'contact">Contact</a>
+    </nav>
+    <select class="language-select" onchange="location = this.value;">
+      <option value="#">Language</option>
+      <option value="features.html">English</option>
+      <option value="features_hi.html">हिन्दी</option>
+    </select>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Key Features of Desh Ka Kisan</h1>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>🛒 Direct Buyer-Seller Connect</h3>
+        <p>Farmers can list their crops and sell directly to buyers without any middlemen. This increases transparency and ensures better pricing for both parties.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>📍 Local Market Listings</h3>
+        <p>Farmers and buyers can view real-time listings relevant to their local region, enabling smoother trade and quicker delivery of fresh produce.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>📦 Easy Product Catalog</h3>
+        <p>Farmers can upload images, details, prices, and availability of their products in a simple and organized format. Buyers can view, compare, and contact directly.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>📱 Role-Based Login</h3>
+        <p>Separate login flows for buyers and sellers. Farmers get access to listing tools, while buyers can view catalogs, place interest, or chat with sellers.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🌐 Multi-Language Interface</h3>
+        <p>Switch between English and Hindi for a personalized experience. Helps farmers who are more comfortable in their native language.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>🔒 Secure and Verified Accounts</h3>
+        <p>Only verified users can list or contact others. This ensures a safe and trustworthy platform for all users, especially first-time digital farmers.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Desh Ka Kisan | All rights reserved | codeX
+  </footer>
+
+</body>
+</html>

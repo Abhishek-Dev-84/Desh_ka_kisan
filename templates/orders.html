@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Orders | Desh Ka Kisan</title>
+  <meta http-equiv = "Cache-Control" content = "no-store" />
+  <meta http-equiv = "Pragma" content = "no-Cache" />
+  <meta http-equiv = "Expires" content = "0" />
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #f9f9f9;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: green;
+    }
+
+    .orders-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .order-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      {% comment %} display: flex;
+      align-items: center; {% endcomment %}
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .order-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .order-details {
+      flex: 1;
+    }
+
+    .order-card h3{
+      margin-top:0;
+      color:#333;
+    }
+
+    .order-details h3 {
+      font-size: 20px;
+      color: #1b5e20;
+    }
+
+    .order-details p {
+      margin: 8px 0;
+      font-size:16px;
+      color: #555;
+    }
+
+    .order-status {
+      font-weight: bold;
+      color: #007b00;
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      font-size: 14px;
+      color: #444;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>Desh Ka Kisan</strong>
+    <nav>
+      <a href="{% url 'buyer-dashboard'%}"> Home</a>
+      <a href="{% url 'Orders'%}">Orders</a>
+      {% comment %} <a href="{% url 'profile'%}">Profile</a> {% endcomment %}
+      <a href="{% url 'logout_buyer'%}">Logout</a>
+    </nav>
+  </header>
+
+  <div class="orders-container">
+    <div class="order-card">
+      {% for order in orders %}
+        
+        {% if order.Product.image %}
+          <img src="{{order.Product.image.url}}" class= "img-fluid rounded" alt = "{{order.Product.name}}">
+        {% else %}
+          <img src="https://via.placeholder.com/100" class="img-fluid rounded" alt="Product Image" />
+        {% endif %}
+      <div class="order-details">
+        <h3><strong>{{order.Product.name}}</strong></h3>
+        <p>Price:<span class='price'> ₹{{order.Product.price}}/{{order.Product.unit}}</span></p>
+        <p>Quantity:<span class='quantity'>{{order.quantity}}</span>{{order.Product.unit}}</p>
+        <p>Total: ₹<span class='total'>{{order.total_price}}</span></p>
+        <p>Ordered on: {{order.order_at |date:"d F Y"}}</p>
+        
+        {% if order.status == 'delivered'%}
+        <p class="order-status"><strong>Delivered</strong></p>
+        {% elif order.status == 'out_for_delivery'%}
+        <p class="order-status"><strong>out for delivery</strong></p>
+        {% elif order.status == 'cancelled'%}
+        <p class="order-status"><strong>cancelled</strong></p>
+        {% endif %}
+      </div>
+        <br>
+        <hr>
+         {% empty %}
+            <tr>
+              <td colspan="6">Not ordered any product yet.</td>
+            </tr>
+        {% endfor %}
+        
+      </div>
+    </div>
+
+  <footer>
+    © 2025 Desh Ka Kisan | All rights reserved
+  </footer>
+
+</body>
+</html>

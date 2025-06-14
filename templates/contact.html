@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Desh Ka Kisan</title>
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #2e7d32;
+    }
+
+    .language-select {
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .main-content {
+      max-width: 800px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .main-content h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #2e7d32;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background-color: #2e7d32;
+      color: #fff;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #256128;
+    }
+
+    .contact-info {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo" height="40" />
+    <nav>
+      <a href="/">Home</a>
+      <a href="features">Features</a>
+      <a href="help">Help</a>
+      <a href="contact">Contact</a>
+    </nav>
+    <select class="language-select" aria-label="Select Language" onchange="location = this.value;">
+      <option value="#">Language</option>
+      <option value="/">English</option>
+      <option value="/">हिन्दी</option>
+    </select>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Contact Us</h1>
+    
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> support@deshkakisan.com</p>
+      <p><strong>Phone:</strong> +91 70614 36794</p>
+      <p><strong>Address:</strong> Sec-2 Dhurwa, Ranchi, Jharkhand, India</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Desh Ka Kisan | All rights reserved | codeX
+  </footer>
+
+</body>
+</html>

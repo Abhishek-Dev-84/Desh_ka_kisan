@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed | Desh Ka Kisan</title>
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7da, #fffde7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .confirmation-box {
+      background: white;
+      max-width: 550px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      padding: 40px;
+      text-align: center;
+    }
+    .check-icon {
+      background: #28a745;
+      color: white;
+      font-size: 40px;
+      width: 70px;
+      height: 70px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 128, 0, 0.4);
+      margin-bottom: 20px;
+      animation: pop 0.4s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    h1 {
+      font-size: 26px;
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .order-summary {
+      text-align: left;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    .order-summary p {
+      margin: 6px 0;
+      font-size: 15px;
+      color: #333;
+    }
+    .order-summary strong {
+      color: #1b5e20;
+    }
+    .btn-back {
+      display: inline-block;
+      background: #2e7d32;
+      color: white;
+      padding: 12px 28px;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-back:hover {
+      background: #1b5e20;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #888;
+    }
+    @media (max-width: 600px) {
+      .confirmation-box {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="confirmation-box">
+    <div class="check-icon">
+      <i class="fas fa-check"></i>
+    </div>
+    <h1>Order Placed Successfully</h1>
+    <p>Thank you! Your order has been placed and is being processed.</p>
+
+    <div class="order-summary">
+      <p><strong>Order ID:</strong> {{order.order_id}}</p>
+      <p><strong>Item:</strong> {{order.Product.name}}</p>
+      <p><strong>Total Amount:</strong> ₹{{order.total_price}}</p>
+      <p><strong>Payment:</strong> Cash on Delivery</p>
+      <p><strong>Delivery Date:</strong> Expected in 3-5 Days</p>
+    </div>
+
+    <a href="{% url 'buyer-dashboard' %}" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Dashboard </a>
+  </div>
+
+</body>
+</html>

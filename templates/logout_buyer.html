@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="5;url=index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logging Out | Desh Ka Kisan</title>
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a8e063, #56ab2f);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      animation: fadeInDown 1s ease forwards;
+      opacity: 0;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+      animation: fadeInUp 1s ease 0.5s forwards;
+      opacity: 0;
+    }
+    .progress-bar {
+      width: 250px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      overflow: hidden;
+      animation: fadeInUp 1s ease 0.8s forwards;
+      opacity: 0;
+    }
+    .progress {
+      height: 100%;
+      width: 0;
+      background: #d4f1a4;
+      border-radius: 5px;
+      animation: progressAnim 5s linear forwards;
+      box-shadow: 0 0 10px #d4f1a4;
+    }
+    @keyframes progressAnim {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes fadeInDown {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(-20px); }
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Logging you out...</h1>
+  <p>You will be redirected to the homepage shortly.</p>
+  <div class="progress-bar">
+    <div class="progress"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Product | Desh Ka Kisan</title>
+  <meta http-equiv = "Cache-Control" content = "no-store" />
+  <meta http-equiv = "Pragma" content = "no-Cache" />
+  <meta http-equiv = "Expires" content = "0" />
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --main-green: #2e7d32;
+      --light-green: #e8f5e9;
+      --gray: #666;
+      --border-color: #ccc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--light-green);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 60px 20px;
+      color: #333;
+    }
+
+    .form-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px 35px;
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      color: var(--main-green);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--gray);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--main-green);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      background: #f7f7f7;
+      border-style: dashed;
+    }
+
+    button {
+      width: 100%;
+      background: var(--main-green);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #276628;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+   <div class="form-container">
+    <h2>🛒 Add New Product</h2>
+    <form action="{% url 'add-product' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="product-name">Product Name</label>
+      <input type="text" id="product-name" name="name" required placeholder="e.g., Fresh Carrots" />
+
+      <label for="description"> Description </label>
+      <textarea id="description" name="description" placeholder="Mention quality, variety, organic info, etc."></textarea>
+
+      <label for="price">Price (₹ per unit)</label>
+      <input type="number" id="price" name="price" required placeholder="e.g., 30" min="1" />
+
+      <label for="quantity">Quantity Available (in kg)</label>
+      <input type="number" id="quantity" name="quantity" required placeholder="e.g., 100" min="1" />
+
+      <label for="category">Category</label>
+      <select id="category" name="category" required>
+        <option value="">Select a Category</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Grains">Grains</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Others">Others</option>
+      </select>
+
+      <label for="unit">UNIT</label>
+      <select id="unit" name="unit" required>
+        <option value="">Select a UNIT</option>
+        <option value="KG">KG</option>
+        <option value="L">L</option>
+
+      <label for="image">Product Image</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
+
+      <button type="submit">Add Product</button>
+    </form>
+  </div>
+
+
+</body>
+</html>

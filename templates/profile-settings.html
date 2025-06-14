@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile Settings | Desh Ka Kisan</title>
+  <meta http-equiv = "Cache-Control" content = "no-store" />
+  <meta http-equiv = "Pragma" content = "no-Cache" />
+  <meta http-equiv = "Expires" content = "0" />
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f5f9;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      color: #2c3e50;
+    }
+    /* Container */
+    .profile-container {
+      background: #fff;
+      max-width: 500px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 6px rgba(50, 50, 93, 0.11),
+        0 1px 3px rgba(0, 0, 0, 0.08);
+      padding: 40px 35px;
+      animation: slideIn 0.5s ease forwards;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 28px;
+      color: #27ae60;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #34495e;
+    }
+    .input-group {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 48px 14px 16px;
+      font-size: 16px;
+      border: 1.8px solid #ccc;
+      border-radius: 12px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 500;
+      color: #2c3e50;
+      outline-offset: 2px;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #27ae60;
+      box-shadow: 0 0 8px #27ae60a8;
+      outline: none;
+    }
+
+    /* Icons inside input */
+    .input-group svg {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      fill: #27ae60;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      letter-spacing: 0.05em;
+      box-shadow: 0 8px 15px rgba(39, 174, 96, 0.3);
+    }
+    button:hover {
+      background-color: #219150;
+      box-shadow: 0 10px 20px rgba(33, 145, 80, 0.45);
+    }
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #b7f4c3;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <h2>👤 Profile Settings</h2>
+    <form action="{% url 'update-profile' %}" method="POST" novalidate>
+      {% csrf_token %}
+      <div class="input-group">
+        <label for="name">UserName</label>
+        <input
+          type="text"
+          id="name"
+          name="username"
+          placeholder="Your UserName"
+          value="{{user.username }}"
+          required
+          autocomplete="name"
+          aria-label="Username"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          placeholder=""
+          value="{{user.phone_no}}"
+          required
+          autocomplete="tel"
+          aria-label="Phone number"
+          pattern="^\+?\d{10,15}$"
+          title="Enter a valid phone number, e.g. +919876543210"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M6.62 10.79a15.091 15.091 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.5 2.5.78 3.85.78a1 1 0 011 1v3.25a1 1 0 01-1 1A17.907 17.907 0 014 5a1 1 0 011-1h3.25a1 1 0 011 1c0 1.35.28 2.65.78 3.85a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+        </svg>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Change Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter new password"
+          autocomplete="*******"
+          aria-label="Change password"
+          minlength="6"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 17a2 2 0 100-4 2 2 0 000 4zm6-6h-1V7a5 5 0 00-10 0v4H6a2 2 0 00-2 2v6a2 2 0 002 2h12a2 2 0 002-2v-6a2 2 0 00-2-2zm-6-4a3 3 0 013 3v4H9v-4a3 3 0 013-3z"/>
+        </svg>
+      </div>
+
+      <button type="submit" aria-label="Save profile changes">Save Changes</button>
+    </form>
+  </div>
+
+</body>
+</html>

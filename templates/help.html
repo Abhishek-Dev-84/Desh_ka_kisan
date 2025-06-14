@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help | Desh Ka Kisan</title>
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #2e7d32;
+    }
+
+    .language-select {
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .main-content h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #2e7d32;
+    }
+
+    details {
+      margin-bottom: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+      color: #444;
+    }
+
+    details[open] summary {
+      color: #2e7d32;
+    }
+
+    details p {
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .contact-box {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .contact-box h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 24px;
+      background-color: orange;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .contact-box a:hover {
+      background-color: darkorange;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Logo" height="40" />
+    <nav>
+      <a href="/">Home</a>
+      <a href="features">Features</a>
+      <a href="help">Help</a>
+      <a href="'contact">Contact</a>
+    </nav>
+    <select class="language-select" aria-label="Select Language" onchange="location = this.value;">
+      <option value="#">Language</option>
+      <option value="help.html">English</option>
+      <option value="help_hi.html">हिन्दी</option>
+    </select>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>How can we help you?</h1>
+
+    <details>
+      <summary>🧑‍🌾 How do I register as a seller (farmer)?</summary>
+      <p>Click on the <strong>Seller Login</strong> button on the homepage. If you're new, it will guide you through a registration form. Provide your name, land details, crop types, and contact number.</p>
+    </details>
+
+    <details>
+      <summary>🛒 How do I login as a buyer?</summary>
+      <p>Use the <strong>Buyer Login</strong> button on the homepage. You’ll need to enter your buyer ID and password. If you don’t have one, click “Register as Buyer.”</p>
+    </details>
+
+    <details>
+      <summary>📦 How can I view available crops and prices?</summary>
+      <p>Once logged in as a buyer, you can browse a dynamic list of crops categorized by type, region, and price. You can also search and sort based on quantity and freshness.</p>
+    </details>
+
+    <details>
+      <summary>🔐 What if I forget my password?</summary>
+      <p>Click on the <strong>Forgot Password</strong> link below the login fields. You’ll receive a reset link or OTP via your registered mobile number.</p>
+    </details>
+
+    <details>
+      <summary>🌐 Can I use the app in Hindi?</summary>
+      <p>Yes! Use the <strong>language dropdown</strong> in the top right corner to switch between English and Hindi.</p>
+    </details>
+
+    <details>
+      <summary>✍️ How to sign up for a new account?</summary>
+      <p>Go to the homepage and click on "Sign up" under the login buttons. Choose whether you're a seller or buyer and fill in the required details to create your account.</p>
+    </details>
+
+    <details>
+      <summary>🌱 What is the difference between seller and buyer?</summary>
+      <p><strong>Sellers</strong> (farmers) list their crops for sale directly. <strong>Buyers</strong> are consumers or merchants who purchase produce. The platform connects them for transparent trade.</p>
+    </details>
+
+    <details>
+      <summary>🔄 How do I change the website language?</summary>
+      <p>Use the language selector in the top right of any page. Select "हिन्दी" for Hindi or "English" to switch the language interface accordingly.</p>
+    </details>
+
+    <details>
+      <summary>💡 What are the benefits of using Desh Ka Kisan?</summary>
+      <p>Desh Ka Kisan connects farmers directly with buyers, removes middlemen, provides real-time crop prices, supports local language, and builds trust with verified user profiles.</p>
+    </details>
+
+    <div class="contact-box">
+      <h3>Need more help?</h3>
+      <p>We’re here 24/7 for your farming journey.</p>
+      <a href="contact.html">Contact Support</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Desh Ka Kisan | All rights reserved | codeX
+  </footer>
+
+</body>
+</html>

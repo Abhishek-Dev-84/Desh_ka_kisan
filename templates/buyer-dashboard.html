@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buyer Dashboard | Desh Ka Kisan</title>
+  <meta http-equiv = "Cache-Control" content = "no-store" />
+  <meta http-equiv = "Pragma" content = "no-Cache" />
+  <meta http-equiv = "Expires" content = "0" />
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7da, #fffde7);
+      color: #333;
+    }
+    header {
+      background: #f9f9f9;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: green;
+    }
+    .welcome {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .welcome h1 {
+      font-size: 40px;
+      color: #2e7d32;
+      margin-bottom: 10px;
+    }
+    .welcome p {
+      font-size: 18px;
+      color: #555;
+    }
+    .product-section {
+      display: grid;
+      gap: 30px;
+      padding: 40px;
+      max-width: 1200px;
+      margin:auto;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      display:flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom : 30px;
+    }
+
+    .product-card: last-child{
+      margin-bottom:0;
+    }
+
+
+    .product-card h3 {
+      color: #1b5e20;
+      margin-bottom: 10px;
+    }
+    .product-card p {
+      font-size: 14px;
+      color: #555;
+    }
+    .product-card button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: green;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .product-card button:hover {
+      background: darkgreen;
+    }
+    footer {
+      padding-bottom:0;
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      font-size: 14px;
+      color: #444;
+    }
+    .product-card img{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <strong>Desh Ka Kisan</strong>
+    <nav>
+      <a href="{% url 'buyer-dashboard'%}"> Home</a>
+      <a href="{% url 'Orders'%}">Orders</a>
+      <a href="{% url 'logout_buyer'%}">Logout</a>
+    </nav>
+  </header>
+
+  <section class="welcome">
+    <h1>Welcome, {{user.username}} 👋</h1>
+    <p>Explore fresh farm products directly from trusted sellers.</p>
+  </section>
+
+  <section class="product-section">
+    {% for product in products %}
+    <div class="product-card">      
+      {% if product.image %}
+        <img src = "{{product.image.url}}" class = 'img-fluid' alt = "{{product.name}}" style="width:100%; height:200px; object-fit: cover; border-radius:10px;">        
+      {% else %}
+        <img src = "https://via.placeholder.com/150" class = 'img-fluid' alt = 'no image'>
+      {% endif %}    
+      <h3><strong>{{ product.name }} </strong></h3>        
+      <p><strong>₹{{ product.price }}/{{product.unit}}<strong> – {{product.description}}</p>
+        {% if product.id %}
+        <a href="{% url 'buy_now' product.id %}"><button>Buy Now</button></a>
+
+        {% endif %}
+        
+    </div>
+    {% endfor %}
+  </section>
+
+  <footer>
+    © 2025 Desh Ka Kisan | All rights reserved
+  </footer>
+
+</body>
+</html>

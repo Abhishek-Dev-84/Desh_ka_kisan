@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manage Listings | Desh Ka Kisan</title>
+  <meta http-equiv = "Cache-Control" content = "no-store" />
+  <meta http-equiv = "Pragma" content = "no-Cache" />
+  <meta http-equiv = "Expires" content = "0" />
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 30px;
+      color: #2d3748;
+      min-height: 100vh;
+    }
+    h1 {
+      color: #27ae60;
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 6px 18px rgba(39, 174, 96, 0.15);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+    }
+    thead {
+      background-color: #27ae60;
+      color: #fff;
+    }
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    tbody tr:hover {
+      background-color: #e6f4ea;
+    }
+    .actions button {
+      background-color: #27ae60;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .actions button.edit {
+      background-color: #3182ce;
+    }
+    .actions button.delete {
+      background-color: #e53e3e;
+    }
+    .actions button:hover {
+      filter: brightness(0.9);
+    }
+    .add-listing-btn {
+      display: inline-block;
+      background-color: #27ae60;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+    .add-listing-btn:hover {
+      background-color: #219150;
+    }
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        display: none;
+      }
+      tbody tr {
+        margin-bottom: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(39, 174, 96, 0.1);
+        padding: 15px;
+        background: white;
+      }
+      tbody td {
+        padding-left: 50%;
+        position: relative;
+        text-align: right;
+        border-bottom: none;
+      }
+      tbody td::before {
+        position: absolute;
+        left: 18px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: 700;
+        content: attr(data-label);
+        text-align: left;
+        color: #27ae60;
+      }
+      .actions button {
+        margin: 5px 0 0 0;
+        width: 48%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Manage Your Listings</h1>
+    <a href="add-product" class="add-listing-btn" aria-label="Add new listing">+ Add New Listing</a>
+    
+    <table aria-label="Seller product listings">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category</th>
+          <th>Price (₹)</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+        <tr>
+          <td data-label = 'product Name'>{{ product.name }}</td>
+          <td data-label = 'Category'>{{ product.category }}</td>
+          <td data-label = 'Price'>{{ product.price }}</td>
+          <td data-label = 'Quantity'>{{ product.quantity }}</td>
+          <td data-label = 'Status'>Active</td>
+          <td data-label="Actions" class="actions">
+            <a href="{% url 'delete_product' product.id %} "class='delete' onclick="return confirm('Are you sure you want to delete {{product.name}}?);')" aria-label="Delete {{product.name}}listing">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6">No products listed yet.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

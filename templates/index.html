@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Desh Ka Kisan</title>  
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>  
+    * { margin: 0; padding: 0; box-sizing: border-box; }  
+    body {  
+      font-family: 'Segoe UI', sans-serif;  
+      background: #fff;  
+      color: #333;  
+    }  
+    header {  
+      display: flex; justify-content: space-between; align-items: center;  
+      padding: 20px 40px; background: #f9f9f9;  
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0;  
+      z-index: 999;  
+    }  
+    nav a {  
+      margin: 0 15px; text-decoration: none; color: #333;  
+      font-weight: 600; transition: color 0.3s;  
+    }  
+    nav a:hover { color: green; }  
+    .language-select { padding: 6px; }  
+    .hero {  
+      background: linear-gradient(135deg, #e0f7da, #fffde7);  
+      min-height: calc(100vh - 120px);  
+      display: flex; flex-direction: column;  
+      justify-content: center; align-items: center;  
+      text-align: center; padding: 0 20px;  
+      color: #1b5e20;  
+    }  
+    .hero h1 {  
+      font-size: 48px; margin-bottom: 20px;  
+      font-weight: 800; color: #2e7d32;  
+      display: flex; align-items: center; justify-content: center; gap: 10px;  
+    }  
+    .hero h1::before {  
+      content: '🌱'; font-size: 40px;  
+    }  
+    .hero p {  
+      font-size: 20px; margin-bottom: 40px;  
+      max-width: 700px; color: #4a4a4a; /* improved paragraph color */  
+    }  
+    .buttons {  
+      display: flex; gap: 20px; flex-wrap: wrap;  
+      justify-content: center;  
+    }  
+    .buttons a {  
+      padding: 14px 28px; font-size: 16px;  
+      font-weight: bold; color: white;  
+      border-radius: 8px; text-decoration: none;  
+      transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;  
+    }  
+    .seller-btn { background: orange; }  
+    .seller-btn:hover { background: darkorange; }  
+    .buyer-btn { background: green; }  
+    .buyer-btn:hover { background: darkgreen; }  
+    .signup-link {  
+      margin-top: 20px;  
+      font-size: 16px;  
+    }  
+    .signup-link a {  
+      color: #1e7e34;  /* brighter green for signup link */  
+      font-weight: bold;  
+      text-decoration: none;  
+    }  
+    .signup-link a:hover {  
+      text-decoration: underline;  
+      color: #145c2b;  /* darker green on hover */  
+    }  
+    footer {  
+      text-align: center;  
+      padding: 20px;  
+      background: #f1f1f1;  
+      font-size: 14px;  
+    }  
+  </style>  
+</head>  
+<body>  
+  
+  <header>  
+    <img src="static/favicon.ico" alt="Desh Ka Kisan" height="40" />  
+    <nav>  
+      <a href="/">Home</a>
+      <a href="features">Features</a>
+      <a href="help">Help</a>
+      <a href="contact">Contact</a>
+    </nav>  
+    <select class="language-select" onchange="location = this.value;">  
+      <option value="#">Language</option>  
+      <option value="index.html">English</option>  
+      <option value="">हिन्दी</option>  
+    </select>  
+  </header>  
+  
+  <section class="hero">  
+    <h1>Desh Ka Kisan</h1>  
+    <p>Empowering farmers with direct access to the market. Grow, connect, and prosper with trust and technology.</p>  
+    <div class="buttons">  
+      <a href="{% url 'seller-login'%}?next=/seller-dashboard" class="seller-btn">🧑‍🌾 Login as Seller</a>  
+      <a href="{% url 'buyer-login'%}" class="buyer-btn">🛒 Login as Buyer</a>  
+    </div>  
+    <div class="signup-link">  
+      Need an account? <a href="signup">Sign up</a>  
+    </div>  
+  </section>  
+  
+  <footer>  
+    © 2025 Desh Ka Kisan | All rights reserved | codeX 
+  </footer>  
+  
+</body>  
+</html>

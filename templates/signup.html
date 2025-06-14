@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up | Desh Ka Kisan</title>
+  <link rel="icon" type="image/x-icon" href = "{% static 'favicon.ico' %}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #a8e063, #56ab2f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 40px 35px 45px;
+      border-radius: 15px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      width: 360px;
+      text-align: center;
+      position: relative;
+    }
+
+    .signup-box h2 {
+      margin-bottom: 25px;
+      color: #2e7d32;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1.1px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .signup-box h2::before {
+      content: "🌱";
+      font-size: 32px;
+      transform: rotate(-10deg);
+      display: inline-block;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input,select {
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      border: 2px solid #c4c4c4;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #2e7d32;
+      box-shadow: 0 0 8px #78c850;
+    }
+
+    button {
+      background: #2e7d32;
+      color: #fff;
+      padding: 15px 0;
+      font-size: 17px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(46, 125, 50, 0.6);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #1b4d19;
+      transform: translateY(-2px);
+    }
+
+    .login-redirect {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .login-redirect a {
+      color: #2e7d32;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .login-redirect a:hover {
+      color: #1b4d19;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="signup-box">
+    <h2>Create an Account</h2>
+    
+    <form action="/signup" method="POST" autocomplete="off" novalidate>
+      {% csrf_token %}
+      
+      <input type="text" name="user" placeholder="Enter your username" required/>
+      <input type="tel" name="phone_no" placeholder="Enter your phone number" required/>
+      <input type="password" name="password" placeholder="Password" required autocomplete="new-password" minlength="6" />
+      <label for="options">Choose your account as</label>
+      <select name="options" id="options">
+        <option value="NONE" selected disabled>NONE</option>
+      <option value="Buyer">Buyer</option>
+      <option value="Seller">Seller</option>
+      </select>
+      <button type="submit">Sign Up</button>
+    </form>
+    <div class="login-redirect">
+      Already have an account? <a href="/">Login here</a>
+    </div>
+  </div>
+
+</body>
+</html>
