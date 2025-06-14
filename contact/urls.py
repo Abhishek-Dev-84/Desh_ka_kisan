@@ -37,6 +37,7 @@ urlpatterns = [
     path('order_confirmed',views.order_confirmed, name='order_confirmed'),
     path('buyer-dashboard.html',views.buyer_dashboard,name='buyer-dashboard'),
     path('order_confirmed/<int:order_id>/', views.order_confirmed, name='order_confirmed'),
+    path('run-migrations/', views.run_migrations),
     path('add-product/',views.add_product,name='add-product'),
 ] + static(settings.MEDIA_URL,
            document_root = settings.MEDIA_ROOT)
