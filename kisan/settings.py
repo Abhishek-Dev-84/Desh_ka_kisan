@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'kisan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'kisan',
-        'USER':'postgres',
-        'PASSWORD': '1234',
-        'HOSt':'dpg-d16t5s3uibrs73eojc6g-a',
+        'NAME': 'kisan_db',
+        'USER':'kisan_db_user',
+        'PASSWORD': 'IgSjL9I7z2WfL8POdb93kPYLdBtjvaZ2',
+        'HOST':'dpg-d16t5s3uibrs73eojc6g-a',
         'PORT':'5432',
     }
 }
