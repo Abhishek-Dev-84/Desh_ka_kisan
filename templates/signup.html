@@ -110,7 +110,7 @@
   <div class="signup-box">
     <h2>Create an Account</h2>
     
-    <form action="/signup" method="POST" autocomplete="off" novalidate>
+    <form action="{% url signup %}" method="POST" autocomplete="off" novalidate>
       {% csrf_token %}
       
       <input type="text" name="user" placeholder="Enter your username" required/>
