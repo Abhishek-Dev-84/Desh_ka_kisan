@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -145,11 +143,6 @@ AUTHENTICATION_BACKENDS = ['contact.backends.MyUserAuthBackend',
 LOGIN_URL = ['/seller-dashboard','/buyer-dashboard']
 LOGOUT_REDIRECT_URL = '/'
 
-cloudinary.config(
-    cloud_name = "dcgy56ifq",
-    api_key = "485869871744448",
-    api_secret = "yKV3ywwnsjv1SLSqQvcl90pNYqo"
-)
 
 MEDIA_URL = f"https://res.cloudinary.com/{os.getenv('CLOUDINARY_CLOUD_NAME')}/"
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
