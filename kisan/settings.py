@@ -142,7 +142,7 @@ AUTHENTICATION_BACKENDS = ['contact.backends.MyUserAuthBackend',
 LOGIN_URL = ['/seller-dashboard','/buyer-dashboard']
 LOGOUT_REDIRECT_URL = '/'
 
-MEDIA_URL = 'https://res.cloudinary.com/dcgy56ifq/'
+MEDIA_URL = f"https://res.cloudinary.com/{os.getenv('CLOUDINARY_CLOUD_NAME')}/"
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
