@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'contact',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -78,11 +80,11 @@ WSGI_APPLICATION = 'kisan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'kisan_db',
-        'USER':'kisan_db_user',
-        'PASSWORD': 'IgSjL9I7z2WfL8POdb93kPYLdBtjvaZ2',
-        'HOST':'dpg-d16t5s3uibrs73eojc6g-a',
-        'PORT':'5432',
+        'NAME': 'kisan',
+        'USER':'postgres',
+        'PASSWORD': '1234',
+        'HOSt':'localhost',
+        'PORT':'5000',
     }
 }
 
@@ -140,5 +142,13 @@ AUTHENTICATION_BACKENDS = ['contact.backends.MyUserAuthBackend',
 LOGIN_URL = ['/seller-dashboard','/buyer-dashboard']
 LOGOUT_REDIRECT_URL = '/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://res.cloudinary.com/dcgy56ifq/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME':os.getenv('dcgy56ifq'),
+    'API_KEY': os.getenv('485869871744448'),
+    'API_SECRET': os.getenv('yKV3ywwnsjv1SLSqQvcl90pNYqo'),
+}
