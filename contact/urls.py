@@ -3,8 +3,10 @@ from django.urls import path,include
 from contact import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import run_migrations
 
 urlpatterns = [
+    path('run-migrations',views.run_migrations,name='run-migrations'),
     path('',views.index,name='index'),
     path('contact',views.contact,name='contact'),
     path('help',views.help,name='help'),
