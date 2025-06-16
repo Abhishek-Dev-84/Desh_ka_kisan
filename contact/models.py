@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.conf import settings
 from django.utils import timezone
 import uuid
+from cloudinary.models import CloudinaryField
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -62,7 +63,7 @@ class Product(models.Model):
     category = models.CharField(max_length=15)
     unit = models.CharField(max_length=10,default="kg")
     description = models.TextField()
-    image = models.ImageField(upload_to='product_images/',null=True,blank=True)
+    image = CloudinaryField('image')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
