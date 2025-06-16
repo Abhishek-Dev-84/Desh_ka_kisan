@@ -5,13 +5,13 @@ from contact.backends import MyUserAuthBackend
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
-from django.core.management import call_command
-from django.http import HttpResponse
+# from django.core.management import call_command
+# from django.http import HttpResponse
 
-def run_migrations(request):
-    call_command('makemigrations', interactive= False)
-    call_command('migrate', interactive= False)
-    return HttpResponse("Migrations done!")
+# def run_migrations(request):
+#     call_command('makemigrations', interactive= False)
+#     call_command('migrate', interactive= False)
+#     return HttpResponse("Migrations done!")
 
 # Create your views here.
 def contact(request):
