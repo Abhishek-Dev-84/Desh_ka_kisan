@@ -146,7 +146,7 @@ LOGIN_URL = ['/seller-dashboard','/buyer-dashboard']
 LOGOUT_REDIRECT_URL = '/'
 
 
-MEDIA_URL = '/media/'
+MEDIA_URL = f"https://res.cloudinary.com/{os.getenv('CLOUDINARY_CLOUD_NAME')}/"
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
