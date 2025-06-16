@@ -9,8 +9,8 @@ from django.core.management import call_command
 from django.http import HttpResponse
 
 def run_migrations(request):
-    call_command('makemigrations')
-    call_command('migrate')
+    call_command('makemigrations', interactive= False)
+    call_command('migrate', interactive= False)
     return HttpResponse("Migrations done!")
 
 # Create your views here.
